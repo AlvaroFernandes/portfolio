@@ -4,8 +4,12 @@ import React from "react";
 import { motion } from "framer-motion";
 import { NavigationData } from "@/lib/data";
 import Link from "next/link";
+import clsx from "clsx";
+import { useActiveSectionContext } from "@/context/ActiveSectionContext";
 
 const Header = () => {
+  const { activeSection, setActiveSection } = useActiveSectionContext();
+
   return (
     <header className="z-[999] relative">
       <motion.div
@@ -26,9 +30,24 @@ const Header = () => {
             >
               <Link
                 href={item.hash}
-                className="flex w-full items-center justify-center text-white px-3 py-3 hover:text-red-400 transition"
+                className={clsx(
+                  "flex w-full items-center justify-center text-white px-3 py-3 hover:text-red-400 transition",
+                  { "text-red-800": activeSection === item.name }
+                )}
+                onClick={() => setActiveSection(item.name)}
               >
                 {item.name}
+                {item.name === activeSection && (
+                  <motion.span
+                    className="bg-gray-800 rounded-full absolute inset-0 -z-10"
+                    layoutId="activeSection"
+                    transition={{
+                      type: "spring",
+                      stiffness: 380,
+                      damping: 30,
+                    }}
+                  ></motion.span>
+                )}
               </Link>
             </motion.li>
           ))}

@@ -1,5 +1,6 @@
-import focusCleaning from "@/public/focusCleaning.png"
-
+import focusCleaningImg from "@/public/focusCleaning.png"
+import codeQuizImg from "@/public/codeQuiz.png"
+ 
 export const NavigationData = [
     {name: "Home", hash:"#home"},
     {name:"About", hash:"#about"},
@@ -14,7 +15,7 @@ export const ProjectsData = [
         title: "Focus Cleaning",
         description:"I developed and maintained the Focus Cleaning Sydney website, ensuring optimal performance, responsive design, and an improved user experience.",
         tags: ['React', 'Bootstrap'],
-        imageUrl: focusCleaning
+        imageUrl: focusCleaningImg
     },
     {
         title: 'Game Network',
@@ -25,8 +26,8 @@ export const ProjectsData = [
 
     {
         title: 'Code Quiz',
-        description:"",
+        description:"I created a timed quiz with JavaScript fundamentals that stores high scores.",
         tags: ['JavaScript', 'Bootstrap' ],
-        imageUrl: ""
+        imageUrl: codeQuizImg
     }
 ] as const
