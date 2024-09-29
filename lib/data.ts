@@ -31,3 +31,29 @@ export const ProjectsData = [
         imageUrl: codeQuizImg
     }
 ] as const
+
+export const skillsData = [
+    "REACT",
+    "NEXT.JS",
+    "NodeJS",
+    "HTML",
+    "CSS", 
+    "JavaScript",
+    "Salesforce",
+    "SAP",
+    "Python",
+    ".Net",
+    "Express",
+    "PHP",
+    "Power Query",
+    "Excel",
+    "MongoDB",
+    "Prisma",
+    "TypeScript",
+    "Git",
+    "Redux",
+    "Tailwind",
+    "Bootstrap",
+    "Material UI",
+    "Franer Motion"
+] as const

@@ -3,10 +3,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 import SectionHeading from "@/components/SectionHeading";
+import { useSectionInView } from "@/lib/hooks";
 
-function About() {
+const About = () => {
+  const { ref } = useSectionInView("About");
+
   return (
     <motion.section
+      ref={ref}
       id="about"
       className="mb-28 max-w-[45rem] text-center leading-8 sm:mb-40 scroll-mt-28"
       initial={{ opacity: 0, y: 100 }}
@@ -35,6 +39,6 @@ function About() {
       </p>
     </motion.section>
   );
-}
+};
 
 export default About;
