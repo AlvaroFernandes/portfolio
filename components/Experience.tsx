@@ -1,5 +1,5 @@
 import { useSectionInView } from "@/lib/hooks";
-import React, { useContext } from "react";
+import React from "react";
 import SectionHeading from "./SectionHeading";
 import {
   VerticalTimeline,
@@ -8,7 +8,6 @@ import {
 import "react-vertical-timeline-component/style.min.css";
 import { experienceData } from "@/lib/data";
 import { useTheme } from "@/context/ThemeContext";
-import { BiBorderRight } from "react-icons/bi";
 
 const Experience = () => {
   const { ref } = useSectionInView("Experience", 0.2);
