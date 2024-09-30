@@ -7,7 +7,7 @@ const SubmitButton = () => {
   return (
     <button
       type="submit"
-      className="group flex items-center justify-center gap-2 h-[3rem] w-[8rem] bg-red-950 rounded-full outline-none transition-all disabled:bg-opacity-65 disabled:scale-100"
+      className="group text-white bg-red-500 dark:bg-red-800 w-[8rem] px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-100 hover:bg-red-700 dark:hover:bg-red-950 active:scale-105 transition-all"
       disabled={pending}
     >
       {pending ? (

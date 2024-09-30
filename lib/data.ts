@@ -1,5 +1,6 @@
 import focusCleaningImg from "@/public/focusCleaning.png"
 import codeQuizImg from "@/public/codeQuiz.png"
+import frInformaticaImg from "@/public/frInformatica.png"
 import { LuGraduationCap } from "react-icons/lu";
 import React from "react";
 import { CgWorkAlt } from "react-icons/cg";
@@ -20,6 +21,7 @@ export const ProjectsData = [
         tags: ['React', 'Bootstrap'],
         imageUrl: focusCleaningImg
     },
+   
     {
         title: 'Game Network',
         description:"",
@@ -32,7 +34,12 @@ export const ProjectsData = [
         description:"I created a timed quiz with JavaScript fundamentals that stores high scores.",
         tags: ['JavaScript', 'Bootstrap' ],
         imageUrl: codeQuizImg
-    }
+    }, {
+        title: "FR Informatica",
+        description:"The first website I developed over 15 years ago, frinformatica.com.br, showcased my web development skills.",
+        tags: ["HTML", "CSS", "JavaScript", "JQuery"],
+        imageUrl: frInformaticaImg
+    },
 ] as const
 
 export const skillsData = [

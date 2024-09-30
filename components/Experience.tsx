@@ -1,5 +1,5 @@
 import { useSectionInView } from "@/lib/hooks";
-import React from "react";
+import React, { useContext } from "react";
 import SectionHeading from "./SectionHeading";
 import {
   VerticalTimeline,
@@ -7,9 +7,13 @@ import {
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 import { experienceData } from "@/lib/data";
+import { useTheme } from "@/context/ThemeContext";
+import { BiBorderRight } from "react-icons/bi";
 
 const Experience = () => {
   const { ref } = useSectionInView("Experience", 0.2);
+
+  const { theme } = useTheme();
   return (
     <section
       className="mb-28 max-w-[53rem] scroll-mt-28 text-center sm:nb-40"
@@ -23,33 +27,32 @@ const Experience = () => {
             <VerticalTimelineElement
               visible={true}
               contentStyle={{
-                background: "#f3f4f6",
+                background:
+                  theme === "light" ? "#f3f4f6" : "rgba(255, 255, 255, 0.05)",
                 boxShadow: "none",
                 border: "1px solid rgb(0,0,0,0.05)",
                 textAlign: "left",
                 padding: "1.3rem 2rem",
                 lineHeight: "1rem",
-                color: "black",
               }}
               date={item.data}
               icon={item.icon}
               contentArrowStyle={{
-                borderRight: "0.4rem solid #9ca3af",
+                borderRight:
+                  theme === "light"
+                    ? "0.4rem solid #9ca3af"
+                    : "0.4rem solid rgba(255, 255, 255, 0.5)",
               }}
               iconStyle={{
-                background: "white",
+                background: theme === "light" ? "#9ca3af" : "white",
                 fontSize: "1.5rem",
-                color: "black",
+                color: theme === "light" ? "white" : "#9ca3af",
               }}
             >
-              <h3 className="font-semibold capitalize text-gray-950">
-                {item.title}
-              </h3>
-              <p className="text-black font-normal !mt-0 italic">
-                {item.institution}
-              </p>
-              <p className="!mt-1 text-gray-950">{item.location}</p>
-              <p className="text-gray-700 !mt-1 !font-normal">
+              <h3 className="font-semibold capitalize">{item.title}</h3>
+              <p className="font-normal !mt-0">{item.institution}</p>
+              <p className="font-normal !mt-0">{item.location}</p>
+              <p className="!mt-1 !font-normal text-gray-700 dark:text-white/75">
                 {item.description}
               </p>
             </VerticalTimelineElement>

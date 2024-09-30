@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <header className="z-[999] relative">
       <motion.div
-        className="fixed top-0 left-1/2  h-[4.5rem] w-full rounded-none border border-white border-opacity-20 bg-gray-950 bg-opacity-80 shadow-lg shadow-black/[0.03] backdrop-blur-[0.5rem] sm:top-6 sm:h-[3.25rem] sm:w-[36rem] sm:rounded-full"
+        className="fixed top-0 left-1/2  h-[4.5rem] w-full rounded-none border border-red-300 dark:border-white border-opacity-20 bg-gray-400 dark:bg-gray-950 bg-opacity-80 shadow-lg shadow-white/[0.03] dark:shadow-black/[0.03] backdrop-blur-[0.5rem] sm:top-6 sm:h-[3.25rem] sm:w-[36rem] sm:rounded-full"
         initial={{ y: -100, x: "-50%", opacity: 0 }}
         animate={{ y: 0, x: "-50%", opacity: 1 }}
         transition={{ type: "spring", stiffness: 125, duration: 1 }}
@@ -32,7 +32,7 @@ const Header = () => {
               <Link
                 href={item.hash}
                 className={clsx(
-                  "flex w-full items-center justify-center text-white px-3 py-3 hover:text-red-400 transition",
+                  "flex w-full items-center justify-center text-gray-950 dark:text-white px-3 py-3 hover:text-red-700 dark:hover:text-red-400 transition",
                   { "text-red-800": activeSection === item.name }
                 )}
                 onClick={() => {
@@ -43,7 +43,7 @@ const Header = () => {
                 {item.name}
                 {item.name === activeSection && (
                   <motion.span
-                    className="bg-gray-800 rounded-full absolute inset-0 -z-10"
+                    className="bg-gray-400 dark:bg-gray-800 rounded-full absolute inset-0 -z-10"
                     layoutId="activeSection"
                     transition={{
                       type: "spring",

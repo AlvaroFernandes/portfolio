@@ -30,9 +30,9 @@ const Contact = () => {
       }}
     >
       <SectionHeading>Contact Me</SectionHeading>
-      <p className="-mt-6">
+      <p className="-mt-6 text-gray-800 dark:text-gray-200">
         Please contact me directly at{" "}
-        <a href="mailto:fernandes.alvaro@gmail.com">
+        <a href="mailto:fernandes.alvaro@gmail.com" className="text-red-500">
           fernandes.alvaro@gmail.com
         </a>{" "}
         or through this form
@@ -52,12 +52,14 @@ const Contact = () => {
       >
         <input
           type="email"
-          className="text-gray-800 h-14 rounded-lg border border-white/10 px-4 py-2"
+          className="h-14 px-4 rounded-lg border border-black/10 dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 dark:outline-none transition-all"
+          required
+          maxLength={500}
           placeholder="Your email"
           name="senderEmail"
         />
         <textarea
-          className="text-gray-800 h-52 my-3 rounded-lg border boder-white/10 px-4 py-2"
+          className="h-52 my-3 rounded-lg border boder-black/10 p-4  dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 dark:outline-none transition-all"
           placeholder="Your message"
           name="message"
         />

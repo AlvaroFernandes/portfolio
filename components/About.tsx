@@ -19,15 +19,21 @@ const About = () => {
     >
       <SectionHeading>About Me</SectionHeading>
       <p className="mb-3">
-        I&apos;m Alvaro Augusto Fernandes, a skilled Full Stack Developer with a
-        strong focus on front-end development. I&apos;ve built clean,
-        responsive, and engaging user interfaces using technologies like HTML,
-        CSS, JavaScript, React, and Next.js, while also leveraging back-end
-        expertise in Node.js, PHP, and .NET to deliver end-to-end solutions. I
-        hold a Bachelor&apos;s degree in Digital Design and a Master&apos;s in
-        Business and Project Management, along with a Full Stack Developer
-        Certificate from the University of Sydney and additional certifications
-        in UML and SQL.
+        I&apos;m <span className="font-medium">Alvaro Augusto Fernandes</span>,
+        a skilled <span className="font-medium">Full Stack Developer</span> with
+        a strong focus on front-end development. I&apos;ve built clean,
+        responsive, and engaging user interfaces using technologies like{" "}
+        <span className="font-semibold text-red-700">
+          HTML, CSS, JavaScript, React, and Next.js
+        </span>
+        , while also leveraging back-end expertise in{" "}
+        <span className="font-semibold text-red-700">
+          Node.js, PHP, and .NET
+        </span>{" "}
+        to deliver end-to-end solutions. I hold a Bachelor&apos;s degree in
+        Digital Design and a Master&apos;s in Business and Project Management,
+        along with a Full Stack Developer Certificate from the University of
+        Sydney and additional certifications in UML and SQL.
       </p>
       <p>
         Throughout my career, I&apos;ve led the redesign of key interfaces,

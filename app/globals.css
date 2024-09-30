@@ -5,3 +5,11 @@
 html {
     --line-color: #e5e7eb;
 }
+
+html.dark {
+    --line-color: rgba(255,255,255,0.05)
+}
+
+.vertical-timeline-element-date {
+    padding:1rem 1rem !important;
+}

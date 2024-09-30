@@ -47,7 +47,7 @@ const Intro = () => {
         Hi, I&apos;m{" "}
         <span className="font-bold text-red-800">Alvaro Augusto Fernandes</span>
         , a <span className="font-bold text-red-800">Full Stack Developer</span>{" "}
-        specializing in{" "}
+        specialized in{" "}
         <span className="italic text-red-800">front-end development</span>,
         creating seamless,{" "}
         <span className="underline text-red-800">user-friendly</span> web
@@ -61,7 +61,7 @@ const Intro = () => {
       >
         <Link
           href="#contact"
-          className="group bg-red-800 px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-red-950 active:scale-105 transition"
+          className="group text-white bg-red-500 dark:bg-red-800 px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-red-700 dark:hover:bg-red-950 active:scale-105 transition"
           onClick={() => {
             setActiveSection("Contact");
             setTimeOfLastClick(Date.now());
@@ -73,7 +73,7 @@ const Intro = () => {
         <a
           href="Alvaro_resume.pdf"
           download
-          className="group bg-white text-black px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-gray-100 active:scale-105 transition cursor-pointer border border-white/10"
+          className="group bg-gray-200 dark:bg-white text-gray-700 dark:text-black px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-gray-100 active:scale-105 transition cursor-pointer border border-white/10"
         >
           Download CV
           <HiDownload className="opacity-70" />
@@ -81,14 +81,14 @@ const Intro = () => {
         <a
           href="https://www.linkedin.com/in/alvaroafernandes/"
           target="_blank"
-          className=" bg-white text-gray-700 p-4 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:bg-gray-95000 active:scale-105 transition cursor-pointer border border-white/10"
+          className="bg-gray-200 dark:bg-white dark:text-black text-gray-700 p-4 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:bg-gray-95000 active:scale-105 transition cursor-pointer border border-white/10"
         >
           <BsLinkedin className="opacity-70" />
         </a>
         <a
           href="https://github.com/AlvaroFernandes"
           target="_blank"
-          className=" bg-white text-gray-700 p-4 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:bg-gray-95000 active:scale-105 transition cursor-pointer border border-white/10"
+          className="bg-gray-200 dark:bg-white dark:text-black text-gray-700 p-4 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:bg-gray-95000 active:scale-105 transition cursor-pointer border border-white/10"
         >
           <BsGithub className="opacity-70" />
         </a>
