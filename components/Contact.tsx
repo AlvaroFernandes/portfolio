@@ -3,9 +3,10 @@
 import { useSectionInView } from "@/lib/hooks";
 import React from "react";
 import SectionHeading from "./SectionHeading";
-import { FaPaperPlane } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { sendEmail } from "@/actions/sendEmail";
+import SubmitButton from "@/components/SubmitButton";
+import toast from "react-hot-toast";
 
 const Contact = () => {
   const { ref } = useSectionInView("Contact", 0.5);
@@ -37,29 +38,30 @@ const Contact = () => {
         or through this form
       </p>
       <form
-        className="mt-10 flex flex-col text-gray-900"
+        className="mt-10 flex flex-col"
         action={async (formData) => {
-          await sendEmail(formData);
+          const { error } = await sendEmail(formData);
+
+          if (error) {
+            toast.error(error);
+            return;
+          }
+
+          toast.success("Email sent successfully!");
         }}
       >
         <input
           type="email"
-          className="h-14 rounded-lg border border-white/10 px-4 py-2"
+          className="text-gray-800 h-14 rounded-lg border border-white/10 px-4 py-2"
           placeholder="Your email"
           name="senderEmail"
         />
         <textarea
-          className="h-52 my-3 rounded-lg border boder-white/10 px-4 py-2"
+          className="text-gray-800 h-52 my-3 rounded-lg border boder-white/10 px-4 py-2"
           placeholder="Your message"
           name="message"
         />
-        <button
-          type="submit"
-          className="group flex items-center justify-center gap-2 h-[3rem] w-[8rem] bg-gray-700 rounded-full outline-none transition-all "
-        >
-          Submit{" "}
-          <FaPaperPlane className="text-xs opacity-70 transition-all group-hover:translate-x-1 group-hover:-translate-y-1" />
-        </button>
+        <SubmitButton />
       </form>
     </motion.section>
   );
