@@ -1,15 +1,65 @@
 "use client";
 
 import { useSectionInView } from "@/lib/hooks";
+import { validateString } from "@/lib/utils";
 import React from "react";
 import SectionHeading from "./SectionHeading";
 import { motion } from "framer-motion";
-import { sendEmail } from "@/actions/sendEmail";
 import SubmitButton from "@/components/SubmitButton";
 import toast from "react-hot-toast";
 
+const contactEndpoint = process.env.NEXT_PUBLIC_CONTACT_ENDPOINT;
+
 const Contact = () => {
   const { ref } = useSectionInView("Contact", 0.5);
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (!contactEndpoint) {
+      toast.error("Configure NEXT_PUBLIC_CONTACT_ENDPOINT before deploying.");
+      return;
+    }
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const senderEmail = formData.get("senderEmail");
+    const message = formData.get("message");
+
+    if (!validateString(senderEmail, 500)) {
+      toast.error("Invalid sender email.");
+      return;
+    }
+
+    if (!validateString(message, 5000)) {
+      toast.error("Invalid message.");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch(contactEndpoint, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+        },
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message.");
+      }
+
+      form.reset();
+      toast.success("Email sent successfully!");
+    } catch {
+      toast.error("Could not send your message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <motion.section
@@ -39,16 +89,7 @@ const Contact = () => {
       </p>
       <form
         className="mt-10 flex flex-col"
-        action={async (formData) => {
-          const { error } = await sendEmail(formData);
-
-          if (error) {
-            toast.error(error);
-            return;
-          }
-
-          toast.success("Email sent successfully!");
-        }}
+        onSubmit={handleSubmit}
       >
         <input
           type="email"
@@ -62,8 +103,10 @@ const Contact = () => {
           className="h-52 my-3 rounded-lg border boder-black/10 p-4  dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 dark:outline-none transition-all"
           placeholder="Your message"
           name="message"
+          required
+          maxLength={5000}
         />
-        <SubmitButton />
+        <SubmitButton pending={isSubmitting} />
       </form>
     </motion.section>
   );

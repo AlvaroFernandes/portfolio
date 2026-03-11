@@ -1,9 +1,11 @@
 import React from "react";
-import { useFormStatus } from "react-dom";
 import { FaPaperPlane } from "react-icons/fa";
 
-const SubmitButton = () => {
-  const { pending } = useFormStatus();
+type SubmitButtonProps = {
+  pending?: boolean;
+};
+
+const SubmitButton = ({ pending = false }: SubmitButtonProps) => {
   return (
     <button
       type="submit"

@@ -15,8 +15,24 @@ type ThemeContextType = {
 
 const ThemeContext = createContext<ThemeContextType | null>(null);
 
+const getInitialTheme = (): Theme => {
+  if (typeof window === "undefined") {
+    return "light";
+  }
+
+  const localTheme = window.localStorage.getItem("Theme") as Theme | null;
+
+  if (localTheme) {
+    return localTheme;
+  }
+
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+};
+
 const ThemeContexProvider = ({ children }: ThemeContextProviderProps) => {
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
 
   const toogleTheme = () => {
     if (theme === "light") {
@@ -31,18 +47,9 @@ const ThemeContexProvider = ({ children }: ThemeContextProviderProps) => {
   };
 
   useEffect(() => {
-    const localTheme = window.localStorage.getItem("Theme") as Theme | null;
+    document.documentElement.classList.toggle("dark", theme === "dark");
+  }, [theme]);
 
-    if (localTheme) {
-      setTheme(localTheme);
-      if (localTheme === "dark") {
-        document.documentElement.classList.add("dark");
-      }
-    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      setTheme("dark");
-      document.documentElement.classList.remove("light");
-    }
-  }, []);
   return (
     <ThemeContext.Provider value={{ theme, toogleTheme }}>
       {children}
